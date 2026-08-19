@@ -12,6 +12,11 @@
  */
 export function getCohort(student) {
   // TODO
+  for (let key in student) {
+    if (key === "cohort") {
+      return student[key];
+    }
+  }
 }
 
 /**
@@ -31,6 +36,11 @@ export function getCohort(student) {
  */
 export function sortStudents(studentA, studentB) {
   // TODO
+  if (studentA.name <= studentB.name) {
+    return studentA;
+  } else {
+    return studentB;
+  }
 }
 
 /**
@@ -48,6 +58,7 @@ export function sortStudents(studentA, studentB) {
  */
 export function makeFlag(color, icon) {
   // TODO
+  return { color: color, icon: icon };
 }
 
 /**
@@ -64,6 +75,9 @@ export function makeFlag(color, icon) {
  */
 export function increment(count) {
   // TODO
+  return {
+    value: count.value + 1,
+  };
 }
 
 /**
@@ -91,6 +105,10 @@ export function increment(count) {
  */
 export function getTaxicabDistance(from, to) {
   // TODO
+  const x = Math.abs(from.x - to.x);
+  const y = Math.abs(from.y - to.y);
+
+  return x + y;
 }
 
 /**
@@ -107,6 +125,15 @@ export function getTaxicabDistance(from, to) {
  */
 export function getHerbivores(animals) {
   // TODO
+
+  const result = [];
+
+  for (let i = 0; i < animals.length; i++) {
+    if (animals[i].isHerbivore) {
+      result.push(animals[i]);
+    }
+  }
+  return result;
 }
 
 /**
@@ -123,6 +150,15 @@ export function getHerbivores(animals) {
  */
 export function getCarnivoreNames(animals) {
   // TODO
+
+  const result = [];
+
+  for (let i = 0; i < animals.length; i++) {
+    if (animals[i].isCarnivore) {
+      result.push(animals[i].name);
+    }
+  }
+  return result;
 }
 
 /**
@@ -144,6 +180,13 @@ export function getCarnivoreNames(animals) {
  */
 export function getTotalCost(cart) {
   // TODO
+  let total = 0;
+
+  for (let i = 0; i < cart.length; i++) {
+    total += cart[i].quantity * cart[i].price;
+  }
+
+  return total;
 }
 
 /**
@@ -164,6 +207,14 @@ export function getTotalCost(cart) {
  */
 export function zip(keys, values) {
   // TODO
+
+  const result = {};
+
+  for (let i = 0; i < keys.length; i++) {
+    result[keys[i]] = values[i];
+  }
+
+  return result;
 }
 
 /**
@@ -180,4 +231,18 @@ export function zip(keys, values) {
  */
 export function countCharacters(word) {
   // TODO
+
+  const counts = {};
+
+  for (let i = 0; i < word.length; i++) {
+    const char = word[i];
+
+    if (counts[char] === undefined) {
+      counts[char] = 1;
+    } else {
+      counts[char]++;
+    }
+  }
+
+  return counts;
 }
